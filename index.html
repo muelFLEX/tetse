@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="dbfake.js"></script>
+
+</head>
+
+<body>
+    </script>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+            }
+    
+            header {
+                background-color: #333;
+                color: #fff;
+                padding: 10px 20px;
+                text-align: center;
+            }
+    
+            .menu-principal {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+    
+            .menu-principal ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+            }
+    
+            .menu-principal li {
+                margin-right: 20px;
+            }
+    
+            .menu-principal a {
+                text-decoration: none;
+                color: #fff;
+                font-weight: bold;
+            }
+    
+            @media (max-width: 768px) {
+                .menu-principal {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+    
+                .menu-principal li {
+                    margin-right: 0;
+                    margin-bottom: 10px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="menu-principal">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="albuns.html">Álbuns</a></li>
+                    <li><a href="mapa.html">Mapa</a></li>
+                </ul>
+            </nav>
+        </header>
+    </body>
+    </html>
+    <main>
+
+        <h1> Destaques</h1> 
+
+        <div id="lista-albuns"></div>
+    </main>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Carrossel </title>
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+            }
+
+            #carousel-container {
+                width: 40%;
+                margin: auto;
+                overflow: hidden;
+                position: relative;
+                max-width: 600px;
+
+            }
+
+            #image-carousel {
+                display: flex;
+                transition: transform 0.5s ease-in-out;
+            }
+
+            .carousel-image {
+                width: 100%;
+                height: auto;
+            }
+
+            #prev-btn,
+            #next-btn {
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 24px;
+                color: white;
+                background-color: #333;
+                border: none;
+                padding: 10px;
+                outline: none;
+            }
+
+            #prev-btn {
+                left: 10px;
+            }
+
+            #next-btn {
+                right: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div id="carousel-container">
+            <button id="prev-btn">&lt;</button>
+            <div id="image-carousel"></div>
+            <button id="next-btn">&gt;</button>
+        </div>
+
+        <script>
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const imageCarousel = document.getElementById('image-carousel');
+
+
+            const jsonData = {
+                data: [
+                    { type: 'image', url: 'https://imagepng.org/wp-content/uploads/2017/09/bandeira-espanha.png' },
+                    { type: 'image', url: 'https://imagepng.org/wp-content/uploads/2017/10/bandeira-mexico.png' },
+                    { type: 'image', url: 'https://imagepng.org/wp-content/uploads/2017/08/bandeira-coreia-do-sul.png' },
+
+                ]
+            };
+
+
+            jsonData.data.forEach((item) => {
+                const imgElement = document.createElement('img');
+                imgElement.src = item.url;
+                imgElement.alt = 'Imagem';
+                imgElement.className = 'carousel-image';
+                imageCarousel.appendChild(imgElement);
+            });
+
+            let currentIndex = 0;
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % jsonData.data.length;
+                updateCarousel();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + jsonData.data.length) % jsonData.data.length;
+                updateCarousel();
+            });
+
+            function updateCarousel() {
+                const translateValue = -currentIndex * 100 + '%';
+                imageCarousel.style.transform = 'translateX(' + translateValue + ')';
+            }
+        </script>
+
+    </body>
+
+</html>
+
+<footer> Copyright 2023 (c)
+
+</footer>
+
+<script>
+    var prods = '';
+    for (i = 0; i < db.dados.length; i++) {
+        prods += ` ${db.dados[i].titulo}  <img src="${db.dados[i].Flag}`;
+    }
+    document.getElementById('lista-albuns').innerHTML = prods;  
+</script>
+</body>
+
+</html>
